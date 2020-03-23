@@ -1,6 +1,6 @@
 (function merchantCheckoutFile() {
   var MID = 'Rechar32004946353223';
-  var URL = 'https://pgp-hotfix.paytm.in/merchantpgpui/checkoutjs/Rechar32004946353223';
+  var URL = 'https://cdn.jsdelivr.net/gh/sakshampaytm15/paytmtes/promo.json';
   var merchantCallback = null;
   var createDOMElements = function(input) {
     var scriptEle = document.createElement('script'),
