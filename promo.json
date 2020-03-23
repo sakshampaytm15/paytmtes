@@ -1,5 +1,5 @@
 {
-  "js": "https://github.com/sakshampaytm15/paytmtes/blob/master/promo.checkout.js",
-  "style": "https://github.com/sakshampaytm15/paytmtes/blob/master/promo.style.css",
+  "js": "https://cdn.jsdelivr.net/gh/sakshampaytm15/paytmtes/promo.checkout.js",
+  "style": "https://cdn.jsdelivr.net/gh/sakshampaytm15/paytmtes/promo.style.css",
   "status": true
 }
