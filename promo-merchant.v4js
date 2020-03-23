@@ -8,14 +8,14 @@
       iframeEle = document.createElement('iframe');
 
     if (cssEle) {
-      cssEle.href = input.promoCSS;
+      cssEle.href = input.style;
       cssEle.rel = 'stylesheet';
       cssEle.type = 'text/css';
       document.head.appendChild(cssEle);
     }
     if (scriptEle) {
       scriptEle.async = true;
-      scriptEle.src = input.promoJS;
+      scriptEle.src = input.js;;
       scriptEle.type = 'application/javascript';
       scriptEle.crossOrigin = "anonymous";
       scriptEle.onload = function() {
