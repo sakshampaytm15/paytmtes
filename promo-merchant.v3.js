@@ -1,21 +1,23 @@
-(function merchantCheckoutFile() {
+(function merchantPromoFile() {
   var MID = 'Rechar32004946353223';
   var URL = 'https://cdn.jsdelivr.net/gh/sakshampaytm15/paytmtes/promo.json';
-  var merchantCallback = null;
+  var promoCallback = null;
   var createDOMElements = function(input) {
     var scriptEle = document.createElement('script'),
-      cssEle = document.createElement('link');
+      cssEle = document.createElement('link'),
+      iframeEle = document.createElement('iframe');
 
     if (cssEle) {
-      cssEle.href = input.style;
+      cssEle.href = input.promoCSS;
       cssEle.rel = 'stylesheet';
       cssEle.type = 'text/css';
       document.head.appendChild(cssEle);
     }
     if (scriptEle) {
       scriptEle.async = true;
-      scriptEle.src = input.js;
+      scriptEle.src = input.promoJS;
       scriptEle.type = 'application/javascript';
+      scriptEle.crossOrigin = "anonymous";
       scriptEle.onload = function() {
         if (window.PromoJS) {
           if (window.Paytm && window.Paytm.PromoJS) {
@@ -30,16 +32,11 @@
           } catch (e) {}
           if (window.Paytm.PromoJS.initLib) {
             window.Paytm.PromoJS.initLib(MID).then(() => {
-              if (merchantCallback) {
-                merchantCallback.call();
+              if (promoCallback) {
+                promoCallback.call();
               }
             });
           }
-
-          // window.Paytm.PromoJS.fetchData(MID);
-          // if (merchantCallback) {
-          //   merchantCallback.call();
-          // }
         }
       };
       document.body.appendChild(scriptEle);
@@ -60,19 +57,21 @@
 
   post();
 
- if(!window.Paytm){
+  if(!window.Paytm){
+    console.log("no window paytm url found")
     // check if window.Paytm exists if not create one
     window.Paytm = {};
+  } else {
+    console.log("window.Paytm", window.Paytm)
   }
 
-  window.Paytm = {
-    PromoJS: {
+
+  window.Paytm.PromoJS = {
       onLoad: function(callback) {
         if (!callback || callback.constructor !== Function) {
           throw new Error('callback in onLoad function should be of function type');
         }
-        merchantCallback = callback;
+        promoCallback = callback;
       }
     }
-  };
 })();
